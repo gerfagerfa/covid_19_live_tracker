@@ -8,9 +8,13 @@ I hope you liked it, and dont forget to like, subscribe, share this video with y
 
 # Social Media
 GitHub: https://github.com/gerfagerfa
+
 Instagram: https://instagram.com/gerfagerfa
+
 LinkedIn: https://www.linkedin.com/in/gerfagerfa
+
 Twitter: https://twitter.com/AllAboutFlutter
+
 Facebook: https://www.facebook.com/MadeWithFlutter
 
 # Inspiration
