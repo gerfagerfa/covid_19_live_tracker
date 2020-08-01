@@ -19,7 +19,7 @@ class _GlobalState extends State<Global> {
             children: <Widget>[
 
               Text(
-                "Total count",
+                "Global Corona Virus Cases",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -41,50 +41,122 @@ class _GlobalState extends State<Global> {
           ),
         ),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-
-            buildCard(
-              "Total Confirmed", 
-              "17.305.183",
-              Color(0xFFFF1242)
-            ),
-
-            buildCard(
-              "Total Active", 
-              "7.305.183",
-              Color(0xFF017BFF)
-            ),
-
-          ],
+        buildCard(
+          "CONFIRMED", 
+          "17.305.183",
+          "55.183",
+          Color(0xFFFF1242)
         ),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
+        buildCard(
+          "ACTIVE", 
+          "17.305.183",
+          "55.183",
+          Color(0xFF017BFF)
+        ),
 
-            buildCard(
-              "Total Recovered", 
-              "7.305.183",
-              Color(0xFF29A746)
-            ),
+        buildCard(
+          "RECOVERED", 
+          "17.305.183",
+          "55.183",
+          Color(0xFF29A746)
+        ),
 
-            buildCard(
-              "Total Death", 
-              "7.305.183",
-              Color(0xFF6D757D)
-            ),
-
-          ],
+        buildCard(
+          "DEATH", 
+          "17.305.183",
+          "55.183",
+          Color(0xFF6D757D)
         ),
         
       ],
     );
   }
 
-  Widget buildCard(String title, String count, Color color){
-    return Expanded(
+  Widget buildCard(String title, String totalCount, String todayCount, Color color){
+    return Card(
+      elevation: 1,
+      child: Container(
+        height: 100,
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          children: <Widget>[
+
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
+
+            Expanded(
+              child: Container(),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+
+                    Text(
+                      "Total",
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+
+                    Text(
+                      totalCount,
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+
+                    Text(
+                      "Today",
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+
+                    Text(
+                      todayCount,
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+    /*return Expanded(
       child: Card(
         elevation: 1,
         child: Container(
@@ -115,7 +187,7 @@ class _GlobalState extends State<Global> {
           ),
         ),
       ),
-    );
+    );*/
   }
 
 }
