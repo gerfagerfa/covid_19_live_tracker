@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:covid_19_live_tracker/utils/constants.dart';
 import 'package:covid_19_live_tracker/ui/navigation_option.dart';
-import 'package:covid_19_live_tracker/ui/worldwide.dart';
+import 'package:covid_19_live_tracker/ui/global.dart';
 import 'package:covid_19_live_tracker/ui/country.dart';
 
 enum NavigationStatus {
-  WORLDWIDE,
+  GLOBAL,
   COUNTRY,
 }
 
@@ -15,7 +15,7 @@ class Tracker extends StatefulWidget {
 }
 
 class _TrackerState extends State<Tracker> {
-  NavigationStatus navigationStatus = NavigationStatus.WORLDWIDE;
+  NavigationStatus navigationStatus = NavigationStatus.GLOBAL;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _TrackerState extends State<Tracker> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "COVID-19 Tracker Live Data"
+          "COVID-19 Tracker Live Data",
         ),
         centerTitle: true,
       ),
@@ -38,6 +38,7 @@ class _TrackerState extends State<Tracker> {
 
           Container(
             height: size.height * 0.9,
+            padding: EdgeInsets.all(32),
             decoration: BoxDecoration(
               color: kPrimaryColor,
               borderRadius: BorderRadius.only(
@@ -47,7 +48,7 @@ class _TrackerState extends State<Tracker> {
             ),
             child: AnimatedSwitcher(
               duration: Duration(milliseconds: 250),
-              child: navigationStatus == NavigationStatus.WORLDWIDE ? Worldwide() : Country(),
+              child: navigationStatus == NavigationStatus.GLOBAL ? Global() : Country(),
             ),
           ),
 
@@ -58,11 +59,11 @@ class _TrackerState extends State<Tracker> {
               children: <Widget>[
 
                 NavigationOption(
-                  title: "Worldwide",
-                  selected: navigationStatus == NavigationStatus.WORLDWIDE,
+                  title: "Global",
+                  selected: navigationStatus == NavigationStatus.GLOBAL,
                   onSelected: () {
                     setState(() {
-                      navigationStatus = NavigationStatus.WORLDWIDE;
+                      navigationStatus = NavigationStatus.GLOBAL;
 
                     });
                   },
