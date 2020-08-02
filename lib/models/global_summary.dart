@@ -1,4 +1,4 @@
-class Summary{
+class GlobalSummaryModel{
   final int newConfirmed;
   final int totalConfirmed;
   final int newDeaths;
@@ -7,11 +7,10 @@ class Summary{
   final int totalRecovered;
   final DateTime date;
 
-  Summary(this.newConfirmed, this.totalConfirmed, this.newDeaths, this.totalDeaths, this.newRecovered, this.totalRecovered, this.date);
+  GlobalSummaryModel(this.newConfirmed, this.totalConfirmed, this.newDeaths, this.totalDeaths, this.newRecovered, this.totalRecovered, this.date);
 
-  factory Summary.fromJson(Map<String, dynamic> json){
-    print(json);
-    return Summary(
+  factory GlobalSummaryModel.fromJson(Map<String, dynamic> json){
+    return GlobalSummaryModel(
       json["Global"]["NewConfirmed"],
       json["Global"]["TotalConfirmed"],
       json["Global"]["NewDeaths"],

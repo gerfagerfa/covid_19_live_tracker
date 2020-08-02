@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../models/summary.dart';
+import '../models/country_summary.dart';
 
-class Statistics extends StatelessWidget {
+class CountryStatistics extends StatelessWidget {
 
-  final Summary summary;
+  final List<CountrySummaryModel> summaryList;
 
-  Statistics({@required this.summary});
+  CountryStatistics({@required this.summaryList});
 
   @override
   Widget build(BuildContext context) {
@@ -15,49 +15,41 @@ class Statistics extends StatelessWidget {
 
         buildCard(
           "CONFIRMED", 
-          summary.totalConfirmed,
-          summary.newConfirmed,
+          summaryList[summaryList.length - 1].confirmed,//summary.totalConfirmed,
+          1,//summary.newConfirmed,
           Color(0xFFFF1242)
         ),
 
         buildCard(
           "ACTIVE", 
-          summary.totalConfirmed - summary.totalRecovered - summary.totalDeaths,
-          summary.newConfirmed - summary.newRecovered - summary.newDeaths,
+          summaryList[summaryList.length - 1].active,//summary.totalConfirmed - summary.totalRecovered - summary.totalDeaths,
+          1,//summary.newConfirmed - summary.newRecovered - summary.newDeaths,
           Color(0xFF017BFF)
         ),
 
         buildCard(
           "RECOVERED", 
-          summary.totalRecovered,
-          summary.newRecovered,
+          summaryList[summaryList.length - 1].recovered,//summary.totalRecovered,
+          1,//summary.newRecovered,
           Color(0xFF29A746)
         ),
 
         buildCard(
           "DEATH", 
-          summary.totalDeaths,
-          summary.newDeaths,
+          summaryList[summaryList.length - 1].deaths,//summary.totalDeaths,
+          1,//summary.newDeaths,
           Color(0xFF6D757D)
         ),
-
-        /*Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6),
-          child: Text(
-            "Statistics updated at" + summary.date.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-        ),*/
 
       ],
     );
   }
 
   Widget buildCard(String title, int totalCount, int todayCount, Color color){
+
+    RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+    Function mathFunc = (Match match) => '${match[1]}.';
+
     return Card(
       elevation: 1,
       child: Container(
@@ -97,7 +89,7 @@ class Statistics extends StatelessWidget {
                     ),
 
                     Text(
-                      totalCount.toString(),
+                      totalCount.toString().replaceAllMapped(reg, mathFunc),
                       style: TextStyle(
                         color: color,
                         fontWeight: FontWeight.bold,
@@ -122,7 +114,7 @@ class Statistics extends StatelessWidget {
                     ),
 
                     Text(
-                      todayCount.toString(),
+                      todayCount.toString().replaceAllMapped(reg, mathFunc),
                       style: TextStyle(
                         color: color,
                         fontWeight: FontWeight.bold,

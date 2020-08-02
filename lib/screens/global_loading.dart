@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
-class Loading extends StatelessWidget {
+class GlobalLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

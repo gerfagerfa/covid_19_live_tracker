@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../screens/statistics.dart';
-import '../screens/loading.dart';
-import '../services/covidService.dart';
-import '../models/summary.dart';
+import '../screens/global_statistics.dart';
+import '../screens/global_loading.dart';
+
+import '../services/covid_service.dart';
+
+import '../models/global_summary.dart';
 
 CovidService covidService = CovidService();
 
@@ -14,12 +16,12 @@ class Global extends StatefulWidget {
 
 class _GlobalState extends State<Global> {
 
-  Future<Summary> summary;
+  Future<GlobalSummaryModel> summary;
 
   @override
   void initState() {
     super.initState();
-    summary = covidService.getSummary();
+    summary = covidService.getGlobalSummary();
   }
 
   @override
@@ -46,7 +48,7 @@ class _GlobalState extends State<Global> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    summary = covidService.getSummary();
+                    summary = covidService.getGlobalSummary();
                   });
                 },
                 child: Icon(
@@ -66,11 +68,11 @@ class _GlobalState extends State<Global> {
               return Center(child: Text("Error"),);
             switch (snapshot.connectionState) {
               case ConnectionState.waiting: 
-                return Loading();
+                return GlobalLoading();
               default:
                 return !snapshot.hasData 
                   ? Center(child: Text("Empty"),)
-                  : Statistics(
+                  : GlobalStatistics(
                     summary: snapshot.data,
                   );
             }

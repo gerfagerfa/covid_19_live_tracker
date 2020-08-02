@@ -24,9 +24,9 @@ class _TrackerState extends State<Tracker> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: kPrimaryColor,
         elevation: 0,
         title: Text(
           "COVID-19 Tracker Live Data",
@@ -37,19 +37,20 @@ class _TrackerState extends State<Tracker> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
 
-          Container(
-            height: size.height * 0.9,
-            padding: EdgeInsets.all(32),
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(50),
-                bottomLeft: Radius.circular(50),
-              )
-            ),
-            child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 250),
-              child: navigationStatus == NavigationStatus.GLOBAL ? Global() : Country(),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(32),
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(50),
+                  bottomLeft: Radius.circular(50),
+                )
+              ),
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 250),
+                child: navigationStatus == NavigationStatus.GLOBAL ? Global() : Country(),
+              ),
             ),
           ),
 
