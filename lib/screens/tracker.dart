@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:covid_19_live_tracker/utils/constants.dart';
-import 'package:covid_19_live_tracker/ui/navigation_option.dart';
-import 'package:covid_19_live_tracker/ui/global.dart';
-import 'package:covid_19_live_tracker/ui/country.dart';
+
+import '../utils/constants.dart';
+import '../screens/navigation_option.dart';
+import '../screens/global.dart';
+import '../screens/country.dart';
 
 enum NavigationStatus {
   GLOBAL,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:covid_19_live_tracker/ui/tracker.dart';
+import 'package:covid_19_live_tracker/screens/tracker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
