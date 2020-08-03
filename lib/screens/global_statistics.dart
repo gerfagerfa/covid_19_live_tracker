@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+import '../utils/constants.dart';
 
 import '../models/global_summary.dart';
 
@@ -17,28 +20,40 @@ class GlobalStatistics extends StatelessWidget {
           "CONFIRMED", 
           summary.totalConfirmed,
           summary.newConfirmed,
-          Color(0xFFFF1242)
+          kConfirmedColor
         ),
 
         buildCard(
           "ACTIVE", 
           summary.totalConfirmed - summary.totalRecovered - summary.totalDeaths,
           summary.newConfirmed - summary.newRecovered - summary.newDeaths,
-          Color(0xFF017BFF)
+          kActiveColor
         ),
 
         buildCard(
           "RECOVERED", 
           summary.totalRecovered,
           summary.newRecovered,
-          Color(0xFF29A746)
+          kRecoveredColor
         ),
 
         buildCard(
           "DEATH", 
           summary.totalDeaths,
           summary.newDeaths,
-          Color(0xFF6D757D)
+          kDeathColor
+        ),
+
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+          child: Text(
+            "Statistics updated " + timeago.format(summary.date),
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
         ),
 
       ],

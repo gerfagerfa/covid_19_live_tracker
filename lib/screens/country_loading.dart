@@ -15,8 +15,7 @@ class CountryLoading extends StatelessWidget {
         inputTextLoading ? loadingInputCard() : Container(),
         loadingCard(),
         loadingCard(),
-        loadingCard(),
-        loadingCard(),
+        loadingChartCard(),
       ],
     );
   }
@@ -73,6 +72,29 @@ class CountryLoading extends StatelessWidget {
             width: double.infinity,
             height: 57,
             color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget loadingChartCard(){
+    return Card(
+      elevation: 1,
+      child: Container(
+        height: 180,
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Shimmer.fromColors(
+          baseColor: Colors.grey[300],
+          highlightColor: Colors.grey[100],
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
       ),
