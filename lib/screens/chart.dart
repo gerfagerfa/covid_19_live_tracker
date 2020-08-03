@@ -17,7 +17,6 @@ class Chart extends StatelessWidget {
       seriesList,
       animate: animate,
       domainAxis: charts.EndPointsTimeAxisSpec(),
-      dateTimeFactory: const charts.LocalDateTimeFactory(),
     );
 
   }
