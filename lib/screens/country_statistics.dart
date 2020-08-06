@@ -44,9 +44,6 @@ class CountryStatistics extends StatelessWidget {
   }
 
   Widget buildCard(String leftTitle, int leftValue, Color leftColor, String rightTitle, int rightValue, Color rightColor){
-    RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
-    Function mathFunc = (Match match) => '${match[1]}.';
-
     return Card(
       elevation: 1,
       child: Container(
@@ -73,7 +70,7 @@ class CountryStatistics extends StatelessWidget {
                   child: Container(),
                 ),
 
-                 Text(
+                Text(
                   "Total",
                   style: TextStyle(
                     color: leftColor,
@@ -143,14 +140,14 @@ class CountryStatistics extends StatelessWidget {
         height: 190,
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Chart(
-          _createSampleData(summaryList, kPrimaryColor),
+          _createData(summaryList),
           animate: false,
         ),
       ),
     );
   }
 
-  static List<charts.Series<TimeSeriesCases, DateTime>> _createSampleData(List<CountrySummaryModel> summaryList, Color color) {
+  static List<charts.Series<TimeSeriesCases, DateTime>> _createData(List<CountrySummaryModel> summaryList) {
 
     List<TimeSeriesCases> confirmedData = [];
     List<TimeSeriesCases> activeData = [];

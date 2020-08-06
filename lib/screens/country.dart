@@ -19,10 +19,6 @@ class Country extends StatefulWidget {
 class _CountryState extends State<Country> {
 
   final TextEditingController _typeAheadController = TextEditingController();
-  String selectedCountry;
-
-  bool loadingCountryList = true;
-  //List<CountryModel> countryList;
   Future<List<CountryModel>> countryList;
   Future<List<CountrySummaryModel>> summaryList;
 
@@ -30,16 +26,10 @@ class _CountryState extends State<Country> {
   initState() {
     super.initState();
 
-    this._typeAheadController.text = "United States of America";
-    summaryList = covidService.getCountrySummary("united-states");
     countryList = covidService.getCountryList();
 
-    /*covidService.getCountryList().then((result) {
-      setState(() {
-        countryList = List.from(result);
-        loadingCountryList = false;
-      });
-    });*/
+    this._typeAheadController.text = "United States of America";
+    summaryList = covidService.getCountrySummary("united-states");
   }
 
   List<String> _getSuggestions(List<CountryModel> list, String query) {
@@ -126,7 +116,8 @@ class _CountryState extends State<Country> {
                     onSuggestionSelected: (suggestion) {
                       this._typeAheadController.text = suggestion;
                       setState(() {
-                        summaryList = covidService.getCountrySummary(snapshot.data.firstWhere((element) => element.country == suggestion).slug);
+                        summaryList = covidService.getCountrySummary(
+                          snapshot.data.firstWhere((element) => element.country == suggestion).slug);
                       });
                     },
                   ),

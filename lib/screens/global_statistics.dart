@@ -61,10 +61,6 @@ class GlobalStatistics extends StatelessWidget {
   }
 
   Widget buildCard(String title, int totalCount, int todayCount, Color color){
-
-    RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
-    Function mathFunc = (Match match) => '${match[1]}.';
-
     return Card(
       elevation: 1,
       child: Container(
