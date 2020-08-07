@@ -16,6 +16,3 @@ LinkedIn: https://www.linkedin.com/in/gerfagerfa
 Twitter: https://twitter.com/AllAboutFlutter
 
 Facebook: https://www.facebook.com/MadeWithFlutter
-
-# Inspiration
-https://dribbble.com/shots/10946247-Corona-virus-tracker-app
