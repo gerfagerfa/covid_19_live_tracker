@@ -9,7 +9,7 @@ Color kDeathColor = Color(0xFF6D757D);
 LinearGradient kGradientShimmer = LinearGradient(
   begin: Alignment.centerLeft,
   end: Alignment.centerRight,
-  colors: [
+  List: [
     Colors.grey[300],
     Colors.grey[100],
   ],
